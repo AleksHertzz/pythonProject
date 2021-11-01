@@ -76,8 +76,14 @@ WSGI_APPLICATION = 'EdPlatform.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mssql',
+        'NAME': 'Education',
+        'USER': 'project_',
+        'PASSWORD': 'qwerty',
+        'HOST': 'LAPTOP-GAPQ08HB\SQLEXPRESS',
+        'PORT': '',
+        'OPTIONS': {"driver": "ODBC Driver 17 for SQL Server",
+        },
     }
 }
 
