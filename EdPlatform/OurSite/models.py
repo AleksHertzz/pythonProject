@@ -1,7 +1,10 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
+class MainCycle(models.Model):
+    user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
