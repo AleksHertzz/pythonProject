@@ -4,11 +4,15 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from . import models
 from django.shortcuts import render
+from taggit.models import Tag
+from django.http import request
+
 
 # Create your views here.
 
 def post_list(request):
-    return render(request, 'OurSite/index.html', {})
+    return render(request, 'oursite/index.html', {})
+
 
 def index(request):
     try:
@@ -17,13 +21,13 @@ def index(request):
         form = UserCreationForm(request.POST)
         return render(request, 'registration/register.html', {'form': form})
         quit()
-
     maincycle = models.MainCycle.objects.get(user=request.user)
 
-    return render(request, 'OurSite/index.html', {
+    return render(request, 'oursite/index.html', {
         'maincycle': maincycle,
         'boosts': boosts,
     })
+
 
 def register(request):
     if request.method == 'POST':
@@ -37,3 +41,7 @@ def register(request):
 
     form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+
+def index_(request):
+    return render(request, 'index.html')

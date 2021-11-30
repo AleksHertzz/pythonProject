@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from taggit.managers import TaggableManager
 
 class MainCycle(models.Model):
     user = models.OneToOneField(User, null=False, on_delete=models.CASCADE)
@@ -14,6 +15,7 @@ class Post(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
+    tags = TaggableManager()
 
     def publish(self):
         self.published_date = timezone.now()
